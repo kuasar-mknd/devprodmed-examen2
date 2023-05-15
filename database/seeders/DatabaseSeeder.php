@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Morceau;
+use App\Models\Genre;
+use App\Models\Artiste;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+       // Seed the genres table
+       $this->call(GenreSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+       // Seed the artistes table
+       $this->call(ArtisteSeeder::class);
+
+       // Seed the morceaux table
+       $this->call(MorceauSeeder::class);
+
+       // Seed the artiste_morceau pivot table
+       $this->call(ArtisteMorceauSeeder::class);
     }
 }
